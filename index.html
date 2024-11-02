@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Самый лучший сайт в мире</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .button {
+            padding: 11px 21px;
+            border: 2px solid;
+            color: white;
+            font-size: 18px;
+            background-color: #a2138f;
+        }
+
+        .button:hover {
+            color: #a2138f;
+            border-color: #a2138f;
+            background-color: transparent;
+        }
+
+        #welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            z-index: 10;
+        }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            background-color: #ddb9b9;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="welcome-modal">
+        Добро пожаловать к нашему веселью!
+    </div>
+
+    <div id="main-content">
+        <div class="block">
+            <h2>Для начала пройдите пожалуйста регистрацию, зачем не скажем. Но обязательно надо!</h2>
+            <form class="unpredictable-form">
+                <input type="text" placeholder="Имя">
+                <input type="text" placeholder="Фамилия">
+                <input type="text" placeholder="Телефон">
+                <button class="button" type="submit" onclick="submitForm(event)">Отправить</button>
+            </form>
+        </div>
+        <div class="block">
+            <h2>А теперь история!</h2>
+            <p>
+                Наш сайт создавался высококвалифицированными специалистами. Ведущему дизайнеру было 3 года, когда он
+                рисовал свои первые шедевры — странные кружочки и моментально получил должность. Наш ведущий
+                программист — старец, которому недавно исполнилось 125 лет; он до сих пор верит, что Windows XP — это
+                вершина технологий, а его код несёт в себе дух олдскульного искусства. Данное искусство даже заставляет
+                многих умиротворяться с дьяволом.
+            </p>
+            <p>
+                Процесс создания был столь вдохновляющим, что мы разработали сайт буквально "на коленях оленя", который
+                зашел в офис случайно и тут же стал частью команды. Олень был крайне обеспокоен, поэтому клавиатура
+                подпрыгивала, что, по мнению нашего старца-программиста, только добавляло сайту шарма. Наши тестировщики
+                — это кот, который проходит по клавиатуре, и ребёнок главного дизайнера, который раз в день нажимает на
+                все кнопки сразу, что моментально тестирует не только наш сайт, но и наш сервер.
+            </p>
+            <p>
+                Каждая кнопка на нашем сайте — это уникальный квест, каждая ссылка — шанс узнать что-то совершенно
+                неожиданное. Мы не просто создавали сайт, мы воплотили наше видение абсурдного веб-искусства и вечной
+                загадки: "Зачем я сюда зашёл?"
+            </p>
+            <h2>Вам понравилась наша история?</h2>
+            <div class="button-container">
+                <button class="button" onclick="showMessage()">Конечно да</button>
+                <button class="floating-element" onmouseover="moveElement(this)" onclick="showMessage()">Нет.</button>
+            </div>
+        </div>
+        <div class="block changing-styles">
+            <h2>А теперь тест!</h2>
+            <p>(да, мы знаем, что такой формат текста самый удобный)</p>
+            <h2>Как вы относитесь к машинам?</h2>
+            <div class="weird-buttons">
+                <button class="button" onclick="carPositive()">Положительно</button>
+                <button class="button" onclick="carNegative()">Отрицательно</button>
+                <button class="button" onclick="carIndifferent()">Не отвечать</button>
+            </div>
+            <div id="response1" class="response"></div>
+            <h2>Какая у вас марка авто?</h2>
+            <div class="weird-buttons">
+                <button class="button" onclick="bmwCar()">BMW</button>
+                <button class="button" onclick="porscheCar()">Porsche</button>
+                <button class="button" onclick="notBmwCar()">Славо богу, что не BMW</button>
+            </div>
+            <div id="response2" class="response"></div>
+            <div class="opinion">
+                <h2>Оцените наш тест от 1 до 5</h2>
+                <button class="button" onclick="showRating(1)">(688/2)+10-268-85</button> <!-- Оценка 1 -->
+                <button class="button" onclick="showRating(5)">((895/8)-1.875+423-8)/105</button> <!-- Оценка 5 -->
+                <button class="button" onclick="showRating(3)">699-697</button> <!-- Оценка 3 -->
+                <button class="button" onclick="showRating(2)">4*4/4*236/2-470</button> <!-- Оценка 2 -->
+                <button class="button" onclick="showRating(4)">4*4/4*16/16*1</button> <!-- Оценка 4 -->
+            </div>
+            <div id="response3" class="response"></div>
+        </div>
+
+        <div class="block">
+            <h2>Благодарим, что вы посетили наш сайт, переходите по ссылкам наших партнеров (или лучше не переходите)!
+            </h2>
+            <div class="random-behavior">
+                <button> <a class="button" href="https://arngren.net" target="_blank">Нажми меня</a></button>
+                <button> <a class="button" href="https://www.historianofthefuturex.com" target="_blank">Попробуй еще раз</a></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Функция для кнопки "ОЧЕНЬ ПОНРАВИЛОСЬ"
+        function moveElement(element) {
+            const randomX = Math.floor(Math.random() * 400) - 200;
+            const randomY = Math.floor(Math.random() * 400) - 200;
+            element.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+        function showMessage() {
+            alert("Мы рады, что вам понравилось, стараемся для вас!");
+        }
+    </script>
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
